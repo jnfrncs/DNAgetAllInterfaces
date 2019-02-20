@@ -25,7 +25,7 @@ dnaServer = 'dnac.rollelab.ch'
 baseUrl = 'https://' + dnaServer 
 
 adminUser = 'admin' # user to access API
-adminPwd = 'C1sc0123' # plain password
+adminPwd = 'XXXXXXX' # plain password
 
 RETURN_OK='200' # found
 RETURN_NF='400' # not found
