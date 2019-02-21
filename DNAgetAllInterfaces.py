@@ -25,7 +25,7 @@ dnaServer = 'dnac.rollelab.ch'
 baseUrl = 'https://' + dnaServer 
 
 adminUser = 'admin' # user to access API
-adminPwd = 'XXXXXXXX' # plain password
+adminPwd = 'XXXXXX' # plain password
 
 RETURN_OK='200' # found
 RETURN_NF='400' # not found
@@ -150,10 +150,14 @@ for intf in json_intfs['response']:
         lastUpdated = to_ascii(intf['adminStatus'])
         serialNo = to_ascii(intf['serialNo'])
         ipv4Addr = to_ascii(intf['ipv4Address'])
+        pid = to_ascii(intf['pid'])
+        portMode = to_ascii(intf['portMode'])
         
         log.write(2,'-- intf:',serialNo, portName, mediaType, opStatus)
         
-        value = { 'portName' : portName, 'series':series, 'mediaType' : mediaType, 'opStatus' : opStatus, 'admStatus' : admStatus, 'lastUpdated' : lastUpdated,'serialNo' : serialNo,'ipv4Addr' : ipv4Addr}
+        value = { 'portName' : portName, 'series':series, 'mediaType' : mediaType, 'opStatus' : opStatus,
+                    'admStatus' : admStatus, 'lastUpdated' : lastUpdated,'serialNo' : serialNo,'ipv4Addr' : ipv4Addr,
+                    'pid' : pid, 'portMode': portMode}
         key = nIntf
         try:
             res = es.index(index=seIndex, doc_type=seType, id=key, body=value)  
